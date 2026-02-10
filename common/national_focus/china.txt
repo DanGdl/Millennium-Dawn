@@ -4147,7 +4147,6 @@ focus_tree = {
 		completion_reward = {
 			add_stability = 0.02
 			add_war_support = -0.02
-			set_country_flag = chi_two_system
 			log = "[GetDateText]: [This.GetName]: focus CHI_Two_Systems executed"
 		}
 
@@ -5466,10 +5465,9 @@ focus_tree = {
 
 		cost = 5
 		completion_reward = {
+			log = "[GetDateText]: [This.GetName]: focus CHI_One_System executed"
 			add_war_support = 0.02
 			add_stability = -0.02
-			set_country_flag = chi_one_system
-			log = "[GetDateText]: [This.GetName]: focus CHI_One_System executed"
 		}
 
 		ai_will_do = {
@@ -9779,7 +9777,7 @@ focus_tree = {
 			if = { limit = { OR = { is_outer_mongolia_state_owned = yes
 									MON = { is_subject_of = CHI }
 								 }
-						  }
+						 }
 			add_resource = {
 				type = oil
 				amount = 10
@@ -13165,42 +13163,12 @@ focus_tree = {
 
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 		completion_reward = {
+			log = "[GetDateText]: [This.GetName]: focus CHI_Ramp_Up_Tensions executed"
 			unlock_decision_tooltip = provoke_a_clash_malaysia
 			unlock_decision_tooltip = provoke_a_clash_philippines
 			unlock_decision_tooltip = provoke_a_clash_vietnam
-			# Change to area_priority --
-			# FIXME: Bird I need new AI for this - Love, Bird
-			# CHI = {
-			# 	add_ai_strategy = {
-			# 		type = area_priority
-			# 		id = 526
-			# 		value = 100
-			# 	}
-			# }
-			# MAY = {
-			# 	add_ai_strategy = {
-			# 		type = area_priority
-			# 		id = 816
-			# 		value = 100
-			# 	}
-			# }
-			# PHI = {
-			# 	add_ai_strategy = {
-			# 		type = area_priority
-			# 		id = 802
-			# 		value = 100
-			# 	}
-			# }
-			# VIE = {
-			# 	add_ai_strategy = {
-			# 		type = area_priority
-			# 		id = 801
-			# 		value = 100
-			# 	}
-			# }
 			set_temp_variable = { modify_chinese_aggression = 2 }
 			CHI_modify_chinese_aggression = yes
-			log = "[GetDateText]: [This.GetName]: focus CHI_Ramp_Up_Tensions executed"
 		}
 
 		ai_will_do = {
@@ -13877,11 +13845,16 @@ focus_tree = {
 		available = { has_war = no }
 
 		completion_reward = {
-			every_country = {
-				limit = { OR = { original_tag = KOR original_tag = NKO original_tag = CHI } }
+			log = "[GetDateText]: [This.GetName]: focus CHI_The_Status_Quo executed"
+			CHI = {
 				add_stability = 0.02
 			}
-			log = "[GetDateText]: [This.GetName]: focus CHI_The_Status_Quo executed"
+			NKO = {
+				add_stability = 0.02
+			}
+			KOR = {
+				add_stability = 0.02
+			}
 		}
 
 		ai_will_do = {
@@ -14334,7 +14307,8 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			every_country = { news_event = { id = korea.4 } }
+			log = "[GetDateText]: [This.GetName]: focus CHI_End_the_Kim_Dynasty executed"
+			news_event = { id = korea.4 }
 			remove_opinion_modifier = {
 				target = NKO
 				modifier = historic_friends
@@ -14347,7 +14321,6 @@ focus_tree = {
 			}
 			set_temp_variable = { modify_chinese_aggression = 1 }
 			CHI_modify_chinese_aggression = yes
-			log = "[GetDateText]: [This.GetName]: focus CHI_End_the_Kim_Dynasty executed"
 		}
 
 		ai_will_do = {
@@ -14966,18 +14939,15 @@ focus_tree = {
 		available = { NOT = { has_war_with = PAK } }
 
 		completion_reward = {
-			every_country = {
-				limit = {
-					OR = {
-						original_tag = CHI
-						original_tag = PAK
-					}
-				}
+			log = "[GetDateText]: [This.GetName]: focus CHI_Cooperate_on_Counterterrorism executed"
+			PAK = {
+				army_experience = 25
+			}
+			CHI = {
 				army_experience = 25
 			}
 			set_temp_variable = { modify_uighur_threat = -5 }
 			CHI_modify_uighur_threat = yes
-			log = "[GetDateText]: [This.GetName]: focus CHI_Cooperate_on_Counterterrorism executed"
 		}
 
 		ai_will_do = {
@@ -15056,61 +15026,111 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			every_country = {
-				limit = {
-					OR = {
-						original_tag = CHI
-						original_tag = PAK
-						original_tag = TAJ
-						original_tag = AFG
-					}
-				}
-				add_tech_bonus = {
-					name = CHI_The_Quadrilateral_Cooperation_and_Coordination_Mechanism
-					bonus = 0.25
-					uses = 1
-					category = CAT_land_doctrine
-				}
-			}
-			every_country = {
-				limit = { OR = { original_tag = PAK original_tag = TAJ original_tag = AFG } }
-				add_opinion_modifier = {
-					target = CHI
-					modifier = military_cooperation
-				}
-				set_temp_variable = { percent_change = 1 }
-				set_temp_variable = { tag_index = CHI }
-				set_temp_variable = { influence_target = THIS }
-				change_influence_percentage = yes
-			}
-			every_country = {
-				limit = { OR = { original_tag = PAK original_tag = TAJ original_tag = CHI } }
-				add_opinion_modifier = {
-					target = AFG
-					modifier = military_cooperation
-				}
-			}
-			every_country = {
-				limit = {
-					OR = {
-						original_tag = CHI
-						original_tag = TAJ
-						original_tag = AFG
-					}
-				}
-				add_opinion_modifier = {
-					target = PAK
-					modifier = military_cooperation
-				}
-			}
-			every_country = {
-				limit = { OR = { original_tag = PAK original_tag = CHI original_tag = AFG } }
-				add_opinion_modifier = {
-					target = TAJ
-					modifier = military_cooperation
-				}
-			}
 			log = "[GetDateText]: [This.GetName]: focus CHI_The_Quadrilateral_Cooperation_and_Coordination_Mechanism executed"
+			if = {
+				limit = { country_exists = CHI }
+				CHI = {
+					add_tech_bonus = {
+						name = CHI_The_Quadrilateral_Cooperation_and_Coordination_Mechanism
+						bonus = 0.25
+						uses = 1
+						category = CAT_land_doctrine
+					}
+					if = {
+						limit = { country_exists = PAK }
+						add_opinion_modifier = { target = PAK modifier = military_cooperation }
+					}
+					if = {
+						limit = { country_exists = TAJ }
+						add_opinion_modifier = { target = TAJ modifier = military_cooperation }
+					}
+					if = {
+						limit = { country_exists = AFG }
+						add_opinion_modifier = { target = AFG modifier = military_cooperation }
+					}
+				}
+			}
+			if = {
+				limit = { country_exists = PAK }
+				PAK = {
+					add_tech_bonus = {
+						name = CHI_The_Quadrilateral_Cooperation_and_Coordination_Mechanism
+						bonus = 0.25
+						uses = 1
+						category = CAT_land_doctrine
+					}
+					if = {
+						limit = { country_exists = CHI }
+						add_opinion_modifier = { target = CHI modifier = military_cooperation }
+						set_temp_variable = { percent_change = 1 }
+						set_temp_variable = { tag_index = CHI }
+						set_temp_variable = { influence_target = THIS }
+						change_influence_percentage = yes
+					}
+					if = {
+						limit = { country_exists = TAJ }
+						add_opinion_modifier = { target = TAJ modifier = military_cooperation }
+					}
+					if = {
+						limit = { country_exists = AFG }
+						add_opinion_modifier = { target = AFG modifier = military_cooperation }
+					}
+				}
+			}
+			if = {
+				limit = { country_exists = TAJ }
+				TAJ = {
+					add_tech_bonus = {
+						name = CHI_The_Quadrilateral_Cooperation_and_Coordination_Mechanism
+						bonus = 0.25
+						uses = 1
+						category = CAT_land_doctrine
+					}
+					if = {
+						limit = { country_exists = CHI }
+						add_opinion_modifier = { target = CHI modifier = military_cooperation }
+						set_temp_variable = { percent_change = 1 }
+						set_temp_variable = { tag_index = CHI }
+						set_temp_variable = { influence_target = THIS }
+						change_influence_percentage = yes
+					}
+					if = {
+						limit = { country_exists = PAK }
+						add_opinion_modifier = { target = PAK modifier = military_cooperation }
+					}
+					if = {
+						limit = { country_exists = AFG }
+						add_opinion_modifier = { target = AFG modifier = military_cooperation }
+					}
+				}
+			}
+			if = {
+				limit = { country_exists = AFG }
+				AFG = {
+					add_tech_bonus = {
+						name = CHI_The_Quadrilateral_Cooperation_and_Coordination_Mechanism
+						bonus = 0.25
+						uses = 1
+						category = CAT_land_doctrine
+					}
+					if = {
+						limit = { country_exists = CHI }
+						add_opinion_modifier = { target = CHI modifier = military_cooperation }
+						set_temp_variable = { percent_change = 1 }
+						set_temp_variable = { tag_index = CHI }
+						set_temp_variable = { influence_target = THIS }
+						change_influence_percentage = yes
+					}
+					if = {
+						limit = { country_exists = PAK }
+						add_opinion_modifier = { target = PAK modifier = military_cooperation }
+					}
+					if = {
+						limit = { country_exists = TAJ }
+						add_opinion_modifier = { target = TAJ modifier = military_cooperation }
+					}
+				}
+			}
 		}
 
 		ai_will_do = {
@@ -15220,6 +15240,7 @@ focus_tree = {
 		}
 
 		completion_reward = {
+			log = "[GetDateText]: [This.GetName]: focus CHI_Joint_Operations executed"
 			if = {
 				limit = { country_exists = TAL }
 				every_country = {
@@ -15266,7 +15287,6 @@ focus_tree = {
 			}
 			set_temp_variable = { modify_chinese_aggression = 1 }
 			CHI_modify_chinese_aggression = yes
-			log = "[GetDateText]: [This.GetName]: focus CHI_Joint_Operations executed"
 		}
 
 		ai_will_do = {
@@ -15410,6 +15430,7 @@ focus_tree = {
 
 		prerequisite = { focus = CHI_End_Joint_Military_Exercises }
 		completion_reward = {
+			log = "[GetDateText]: [This.GetName]: focus CHI_Strategic_Realignment executed"
 			add_political_power = -200
 			remove_opinion_modifier = {
 				target = PAK
@@ -15427,8 +15448,7 @@ focus_tree = {
 					modifier = raj_sino_pakistani_friendship
 				}
 			}
-			every_country = { news_event = { id = sino_indian.13 } }
-			log = "[GetDateText]: [This.GetName]: focus CHI_Strategic_Realignment executed"
+			news_event = { id = sino_indian.13 }
 		}
 
 		ai_will_do = {
@@ -16326,7 +16346,7 @@ focus_tree = {
 				add = 1
 				AND = { is_historical_focus_on = yes
 						threat > 0.3
-					  }
+					 }
 			}
 		}
 	}
@@ -16602,7 +16622,7 @@ focus_tree = {
 			   NOT = { has_war_with = MON }
 			   MON = {
 					influence_higher_50 = yes
-			  }
+			 }
 
 		}
 
@@ -16972,65 +16992,20 @@ focus_tree = {
 				custom_trigger_tooltip = {
 					tooltip = CHI_influence_central_asia_tt
 					NOT = {
-						any_country = {
-							OR = {
-								original_tag = KAZ
-								original_tag = KYR
-								original_tag = TAJ
-								original_tag = TRK
-								original_tag = UZB
-							}
-							OR = {
-								AND = {
-									check_variable = { influence_array^0 = SOV }
-									check_variable = { influence_array^1 = ROOT }
-								}
-								AND = {
-									OR = {
-										check_variable = { influence_array^0 = SOV }
-										check_variable = { influence_array^1 = SOV }
-									}
-									check_variable = { influence_array^2 = ROOT }
-								}
-								AND = {
-									OR = {
-										check_variable = { influence_array^0 = SOV }
-										check_variable = { influence_array^1 = SOV }
-										check_variable = { influence_array^2 = SOV }
-									}
-									check_variable = { influence_array^3 = ROOT }
-								}
-								AND = {
-									OR = {
-										check_variable = { influence_array^0 = SOV }
-										check_variable = { influence_array^1 = SOV }
-										check_variable = { influence_array^2 = SOV }
-										check_variable = { influence_array^3 = SOV }
-									}
-									check_variable = { influence_array^4 = ROOT }
-								}
-								AND = {
-									OR = {
-										check_variable = { influence_array^0 = SOV }
-										check_variable = { influence_array^1 = SOV }
-										check_variable = { influence_array^2 = SOV }
-										check_variable = { influence_array^3 = SOV }
-										check_variable = { influence_array^4 = SOV }
-									}
-									check_variable = { influence_array^5 = ROOT }
-								}
-								AND = {
-									OR = {
-										check_variable = { influence_array^0 = SOV }
-										check_variable = { influence_array^1 = SOV }
-										check_variable = { influence_array^2 = SOV }
-										check_variable = { influence_array^3 = SOV }
-										check_variable = { influence_array^4 = SOV }
-										check_variable = { influence_array^5 = SOV }
-									}
-									check_variable = { influence_array^6 = ROOT }
-								}
-							}
+						KAZ = {
+							CHI_the_bears_backyard_nation_trigger = yes
+						}
+						KYR = {
+							CHI_the_bears_backyard_nation_trigger = yes
+						}
+						TAJ = {
+							CHI_the_bears_backyard_nation_trigger = yes
+						}
+						TRK = {
+							CHI_the_bears_backyard_nation_trigger = yes
+						}
+						UZB = {
+							CHI_the_bears_backyard_nation_trigger = yes
 						}
 					}
 				}
@@ -17357,7 +17332,9 @@ focus_tree = {
 		prerequisite = { focus = CHI_Crack_Down_on_the_Three_Evils }
 
 		search_filters = { FOCUS_FILTER_STABILITY }
+
 		completion_reward = {
+			log = "[GetDateText]: [This.GetName]: focus CHI_Development_Assistance executed"
 			set_temp_variable = { treasury_change = -10 }
 			modify_treasury_effect = yes
 			every_country = {
@@ -17370,7 +17347,6 @@ focus_tree = {
 					add_stability = 0.02
 				}
 			}
-			log = "[GetDateText]: [This.GetName]: focus CHI_Development_Assistance executed"
 		}
 
 		ai_will_do = {
@@ -17607,6 +17583,7 @@ focus_tree = {
 		prerequisite = { focus = CHI_Civilian_Technology_Sharing focus = CHI_Military_Technology_Sharing focus = CHI_Crack_Down_on_the_Three_Evils }
 		mutually_exclusive = { focus = CHI_Equal_Partners }
 		completion_reward = {
+			log = "[GetDateText]: [This.GetName]: focus CHI_Chinese_Dominance executed"
 			set_temp_variable = { temp_opinion = 10 }
 			change_communist_cadres_opinion = yes
 			SOV = {
@@ -17616,12 +17593,9 @@ focus_tree = {
 				}
 				custom_effect_tooltip = CHI_SOV_decisions_locked_tt
 			}
-			every_country = {
-				news_event = { id = sco.9 }
-			}
+			news_event = { id = sco.9 }
 			set_temp_variable = { modify_chinese_aggression = 2 }
 			CHI_modify_chinese_aggression = yes
-			log = "[GetDateText]: [This.GetName]: focus CHI_Chinese_Dominance executed"
 		}
 
 		ai_will_do = {
@@ -17845,10 +17819,9 @@ focus_tree = {
 				limit = { has_government = communism }
 				custom_trigger_tooltip = {
 					tooltip = CSTO_all_emerging_tt
-					NOT = {
-						any_country = {
-							is_in_faction_with = SOV
-							NOT = { has_government = communism }
+					SOV = {
+						all_allied_country = {
+							has_government = communism
 						}
 					}
 				}
@@ -17857,10 +17830,9 @@ focus_tree = {
 				limit = { has_government = democratic }
 				custom_trigger_tooltip = {
 					tooltip = CSTO_all_democratic_tt
-					NOT = {
-						any_country = {
-							is_in_faction_with = SOV
-							NOT = { has_government = democratic }
+					SOV = {
+						all_allied_country = {
+							has_government = democratic
 						}
 					}
 				}
@@ -17868,6 +17840,7 @@ focus_tree = {
 		}
 
 		completion_reward = {
+			log = "[GetDateText]: [This.GetName]: focus CHI_Merge_with_CSTO executed"
 			every_country = {
 				limit = { is_in_faction_with = SOV NOT = { original_tag = NKR } is_sco = no }
 				if = {
@@ -17885,13 +17858,9 @@ focus_tree = {
 					CHI = { add_to_faction = PREV }
 				}
 				add_to_array = { global.sco_members = THIS }
-			}
-			every_country = {
-				limit = { is_sco = yes }
 				army_experience = 25
 			}
 			SCO_dirty_update = yes
-			log = "[GetDateText]: [This.GetName]: focus CHI_Merge_with_CSTO executed"
 		}
 
 		ai_will_do = {
@@ -18438,7 +18407,7 @@ focus_tree = {
 
 		prerequisite = { focus = CHI_Friendship_Schools }
 
- 		search_filters = { FOCUS_FILTER_CHI_AGGRESSION FOCUS_FILTER_RESEARCH }
+		 search_filters = { FOCUS_FILTER_CHI_AGGRESSION FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			set_temp_variable = { treasury_change = -20 }
 			modify_treasury_effect = yes
