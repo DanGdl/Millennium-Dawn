@@ -1003,9 +1003,11 @@ country_event = {
 		custom_effect_tooltip = GER_bavarian_nationalism_decrease_1
 		add_to_variable = { GER_bavarian_nationalism_var = -1 }
 		newline = yes
-		custom_effect_tooltip = GER_change_public_budget
-		set_temp_variable = { GER_police_cost_change = 0.02 }
-		update_GER_police_cost = yes
+		custom_effect_tooltip = {
+			localization_key = modifies_dynamic_modifier_tt
+			MODIFIER = GER_generic_spending_laws
+		}
+		add_to_variable = { GER_police_cost = 0.02 tooltip = GER_police_cost_tt }
 
 		ai_chance = {
 			base = 5
@@ -1715,16 +1717,10 @@ country_event = {
 	title = germany.42.t
 	desc = germany.42.d
 	picture = GFX_powerplant
-
+	is_triggered_only = yes
 	trigger = {
-		tag = GER
-		focus_progress = {
-		focus = GER_revive_greifswald
-		progress > 0.01
-		}
+		original_tag = GER
 	}
-
-	fire_only_once = yes
 
 	option = {
 		name = germany.42.a
@@ -1756,22 +1752,20 @@ country_event = {
 	title = germany.43.t
 	desc = germany.43.d
 	picture = GFX_powerplant
-
+	is_triggered_only = yes
 	trigger = {
 		tag = GER
 		has_completed_focus = GER_revive_greifswald
 	}
 
-	fire_only_once = yes
-
 	option = {
 		name = germany.43.a
 		log = "[GetDateText]: [This.GetName]: germany.43.a executed"
 		539 = {
-			add_extra_state_shared_building_slots = 2
+			add_extra_state_shared_building_slots = 1
 			add_building_construction = {
 				type = nuclear_reactor
-				level = 2
+				level = 1
 				instant_build = yes
 			}
 		}
@@ -1784,7 +1778,7 @@ country_event = {
 	title = germany.44.t
 	desc = germany.44.d
 	picture = GFX_gen_construction
-
+	is_triggered_only = yes
 	trigger = {
 		tag = GER
 		has_completed_focus = GER_revive_greifswald
@@ -1795,9 +1789,11 @@ country_event = {
 	option = {
 		name = germany.44.a
 		log = "[GetDateText]: [This.GetName]: germany.44.a executed"
-		custom_effect_tooltip = GER_change_public_budget
-		set_temp_variable = { GER_health_cost_change = -0.03 }
-		update_GER_healthcare_cost = yes
+		custom_effect_tooltip = {
+			localization_key = modifies_dynamic_modifier_tt
+			MODIFIER = GER_generic_spending_laws
+		}
+		add_to_variable = { GER_health_cost = -0.03 tooltip = GER_healthcare_cost_tt }
 	}
 }
 #Krater von Wattenscheid
@@ -2785,7 +2781,7 @@ country_event = { #Die Linke rises in popularity
 	picture = GFX_die_linke_stage
 	is_triggered_only = yes
 	trigger = {
-		emerging_anarchist_communism_are_not_in_power = yes
+		emerging_anarchist_communism_are_in_power = no
 	}
 	option = {
 		name = germany_divide.1.a
@@ -2807,7 +2803,7 @@ country_event = { #Die Linke supporters stage protests
 	picture = GFX_german_riot
 	is_triggered_only = yes
 	trigger = {
-		emerging_anarchist_communism_are_not_in_power = yes
+		emerging_anarchist_communism_are_in_power = no
 	}
 	option = {
 		name = germany_divide.2.a
@@ -2839,7 +2835,7 @@ country_event = { #Die Linke supporters cause riots
 	picture = GFX_german_riot
 	is_triggered_only = yes
 	trigger = {
-		emerging_anarchist_communism_are_not_in_power = yes
+		emerging_anarchist_communism_are_in_power = no
 	}
 	option = {
 		name = germany_divide.3.a
@@ -2871,7 +2867,7 @@ country_event = { #Die Linke supporters infiltrate bundeswher
 	picture = GFX_bundeswehr2
 	is_triggered_only = yes
 	trigger = {
-		emerging_anarchist_communism_are_not_in_power = yes
+		emerging_anarchist_communism_are_in_power = no
 	}
 	option = {
 		name = germany_divide.4.a
@@ -2893,7 +2889,7 @@ country_event = { #Die Linke questions our administration
 	picture = GFX_die_linke_stage
 	is_triggered_only = yes
 	trigger = {
-		emerging_anarchist_communism_are_not_in_power = yes
+		emerging_anarchist_communism_are_in_power = no
 	}
 	option = {
 		name = germany_divide.5.a
@@ -2914,7 +2910,7 @@ country_event = { #Die Linke warms up with Russia
 	picture = GFX_die_linke_stage
 	is_triggered_only = yes
 	trigger = {
-		emerging_anarchist_communism_are_not_in_power = yes
+		emerging_anarchist_communism_are_in_power = no
 	}
 	option = {
 		name = germany_divide.6.a
@@ -2935,7 +2931,7 @@ country_event = { #Die Linke calls for strikes
 	picture = GFX_die_linke_stage
 	is_triggered_only = yes
 	trigger = {
-		emerging_anarchist_communism_are_not_in_power = yes
+		emerging_anarchist_communism_are_in_power = no
 	}
 	option = {
 		name = germany_divide.7.a
@@ -2953,7 +2949,7 @@ country_event = { #Die Linke drives away foreign investors
 	picture = GFX_banking_crisis
 	is_triggered_only = yes
 	trigger = {
-		emerging_anarchist_communism_are_not_in_power = yes
+		emerging_anarchist_communism_are_in_power = no
 	}
 	option = {
 		name = germany_divide.8.a
@@ -2972,7 +2968,7 @@ country_event = { #Die Linke rallies labour unions
 	picture = GFX_german_riot
 	is_triggered_only = yes
 	trigger = {
-		emerging_anarchist_communism_are_not_in_power = yes
+		emerging_anarchist_communism_are_in_power = no
 	}
 	option = {
 		name = germany_divide.9.a
@@ -3012,7 +3008,7 @@ country_event = {
 	picture = GFX_russian_media_influence
 	is_triggered_only = yes
 	trigger = {
-		emerging_anarchist_communism_are_not_in_power = yes
+		emerging_anarchist_communism_are_in_power = no
 	}
 	option = { # Ouch
 		name = germany_divide.11.a
@@ -3096,7 +3092,7 @@ country_event = {
 	picture = GFX_handshake_black
 	is_triggered_only = yes
 	trigger = {
-		emerging_anarchist_communism_are_not_in_power = yes
+		emerging_anarchist_communism_are_in_power = no
 	}
 	option = { # Provide the necessary funds
 		name = germany_divide.12.a
@@ -3128,7 +3124,7 @@ country_event = {
 	picture = GFX_german_parliment
 	is_triggered_only = yes
 	trigger = {
-		emerging_anarchist_communism_are_not_in_power = yes
+		emerging_anarchist_communism_are_in_power = no
 	}
 	option = { # Lets bite our tongues
 		name = germany_divide.13.a
@@ -3164,7 +3160,7 @@ country_event = {
 	picture = GFX_german_riot
 	is_triggered_only = yes
 	trigger = {
-		emerging_anarchist_communism_are_not_in_power = yes
+		emerging_anarchist_communism_are_in_power = no
 	}
 	option = { # We must not intervene!
 		name = germany_divide.14.a
@@ -3266,7 +3262,7 @@ country_event = {
 	picture = GFX_banking_crisis
 	is_triggered_only = yes
 	trigger = {
-		emerging_anarchist_communism_are_not_in_power = yes
+		emerging_anarchist_communism_are_in_power = no
 	}
 	option = {
 		name = germany_divide.15.a
@@ -3302,7 +3298,7 @@ country_event = {
 	picture = GFX_house
 	is_triggered_only = yes
 	trigger = {
-		emerging_anarchist_communism_are_not_in_power = yes
+		emerging_anarchist_communism_are_in_power = no
 	}
 	option = { # Finance them
 		name = germany_divide.16.a
@@ -3336,7 +3332,7 @@ country_event = {
 	picture = GFX_german_parliment
 	is_triggered_only = yes
 	trigger = {
-		emerging_anarchist_communism_are_not_in_power = yes
+		emerging_anarchist_communism_are_in_power = no
 	}
 	option = {
 		name = germany_divide.17.a
@@ -3366,7 +3362,7 @@ country_event = {
 	picture = GFX_unification_of_church_and_state
 	is_triggered_only = yes
 	trigger = {
-		emerging_anarchist_communism_are_not_in_power = yes
+		emerging_anarchist_communism_are_in_power = no
 	}
 	option = { # There is nothing we can do
 		name = germany_divide.18.a
@@ -3437,7 +3433,7 @@ country_event = {
 	desc = germany_divide.19.d
 	is_triggered_only = yes
 	trigger = {
-		emerging_anarchist_communism_are_not_in_power = yes
+		emerging_anarchist_communism_are_in_power = no
 	}
 	option = { # Unfortunate
 		name = germany_divide.19.a
@@ -3466,7 +3462,7 @@ country_event = {
 	picture = GFX_gen_construction
 	is_triggered_only = yes
 	trigger = {
-		emerging_anarchist_communism_are_not_in_power = yes
+		emerging_anarchist_communism_are_in_power = no
 	}
 	option = {
 		name = germany_divide.20.a
@@ -3765,11 +3761,12 @@ country_event = { # The drug question
 	option = {	# Legalize it
 		name = Germany.204.a
 		log = "[GetDateText]: [This.GetName]: Germany.204.a executed"
-		custom_effect_tooltip = GER_change_public_budget
-		set_temp_variable = { GER_police_cost_change = -0.02 }
-		update_GER_police_cost = yes
-		set_temp_variable = { GER_health_cost_change = 0.01 }
-		update_GER_healthcare_cost = yes
+		custom_effect_tooltip = {
+			localization_key = modifies_dynamic_modifier_tt
+			MODIFIER = GER_generic_spending_laws
+		}
+		add_to_variable = { GER_police_cost = -0.02 tooltip = GER_police_cost_tt }
+		add_to_variable = { GER_health_cost = 0.01 tooltip = GER_healthcare_cost_tt }
 		hidden_effect = {
 			random_list = {
 				70 = {
@@ -3782,11 +3779,12 @@ country_event = { # The drug question
 	option = {	# No! Hard ban on all drugs!
 		name = Germany.204.b
 		log = "[GetDateText]: [This.GetName]: Germany.204.a executed"
-		custom_effect_tooltip = GER_change_public_budget
-		set_temp_variable = { GER_police_cost_change = 0.01 }
-		update_GER_police_cost = yes
-		set_temp_variable = { GER_health_cost_change = -0.02 }
-		update_GER_healthcare_cost = yes
+		custom_effect_tooltip = {
+			localization_key = modifies_dynamic_modifier_tt
+			MODIFIER = GER_generic_spending_laws
+		}
+		add_to_variable = { GER_police_cost = 0.01 tooltip = GER_police_cost_tt }
+		add_to_variable = { GER_health_cost = -0.02 tooltip = GER_healthcare_cost_tt }
 	}
 }
 # GREEN EVENTS
@@ -3910,9 +3908,11 @@ country_event = { # Sanctuary for fleeing LGBT?
 		set_temp_variable = { influence_target = GER }
 		change_influence_percentage = yes
 		newline = yes
-		custom_effect_tooltip = GER_change_public_budget
-		set_temp_variable = { GER_health_cost_change = -0.05 }
-		update_GER_healthcare_cost = yes
+		custom_effect_tooltip = {
+			localization_key = modifies_dynamic_modifier_tt
+			MODIFIER = GER_generic_spending_laws
+		}
+		add_to_variable = { GER_health_cost = -0.05 tooltip = GER_healthcare_cost_tt }
 	}
 }
 # AfD Event
@@ -3929,9 +3929,11 @@ country_event = { # Circumcisions?
 		log = "[GetDateText]: [This.GetName]: Germany.209.a executed"
 		decrease_healthcare_budget = yes
 		newline = yes
-		custom_effect_tooltip = GER_change_public_budget
-		set_temp_variable = { GER_health_cost_change = -0.01 }
-		update_GER_healthcare_cost = yes
+		custom_effect_tooltip = {
+			localization_key = modifies_dynamic_modifier_tt
+			MODIFIER = GER_generic_spending_laws
+		}
+		add_to_variable = { GER_health_cost = -0.01 tooltip = GER_healthcare_cost_tt }
 		add_stability = -0.05
 	}
 	option = {	# Why the hell are you asking me this? Get out of my office!
@@ -4664,7 +4666,7 @@ country_event = {
 		log = "[GetDateText]: [This.GetName]: Germany.230.b executed"
 		GER = { country_event = Germany.231 }
 		effect_tooltip = {
-			818 = {  transfer_state_to = GER }
+			818 = { transfer_state_to = GER }
 			821 = { transfer_state_to = GER }
 			819 = { transfer_state_to = GER }
 			820 = { transfer_state_to = GER }
@@ -4690,7 +4692,7 @@ country_event = {
 	option = {
 		name = Germany.231.a
 		log = "[GetDateText]: [This.GetName]: Germany.231.a executed"
-		818 = {  transfer_state_to = GER }
+		818 = { transfer_state_to = GER }
 		821 = { transfer_state_to = GER }
 		819 = { transfer_state_to = GER }
 		820 = { transfer_state_to = GER }
@@ -6297,9 +6299,11 @@ country_event = {
 		set_temp_variable = { temp_opinion = -5 }
 		change_labour_unions_opinion = yes
 		newline = yes
-		custom_effect_tooltip = GER_change_public_budget
-		set_temp_variable = { GER_welfare_cost_change = -0.02 }
-		update_GER_welfare_cost = yes
+		custom_effect_tooltip = {
+			localization_key = modifies_dynamic_modifier_tt
+			MODIFIER = GER_generic_spending_laws
+		}
+		add_to_variable = { GER_welfare_cost = -0.02 tooltip = GER_welfare_cost_tt }
 		ai_chance = {
 			base = 5
 		}
@@ -6311,9 +6315,11 @@ country_event = {
 		set_temp_variable = { temp_opinion = 5 }
 		change_labour_unions_opinion = yes
 		newline = yes
-		custom_effect_tooltip = GER_change_public_budget
-		set_temp_variable = { GER_welfare_cost_change = 0.01 }
-		update_GER_welfare_cost = yes
+		custom_effect_tooltip = {
+			localization_key = modifies_dynamic_modifier_tt
+			MODIFIER = GER_generic_spending_laws
+		}
+		add_to_variable = { GER_welfare_cost = 0.01 tooltip = GER_welfare_cost_tt }
 		ai_chance = {
 			base = 5
 		}
@@ -6487,9 +6493,11 @@ country_event = {
 	option = {
 		name = germany_yearly.14.b
 		log = "[GetDateText]: [This.GetName]: germany_yearly.14.b executed"
-		custom_effect_tooltip = GER_change_public_budget
-		set_temp_variable = { GER_health_cost_change = 0.01 }
-		update_GER_healthcare_cost = yes
+		custom_effect_tooltip = {
+			localization_key = modifies_dynamic_modifier_tt
+			MODIFIER = GER_generic_spending_laws
+		}
+		add_to_variable = { GER_health_cost = 0.01 tooltip = GER_healthcare_cost_tt }
 		add_stability = 0.04
 		ai_chance = {
 			base = 5
@@ -6549,9 +6557,11 @@ country_event = {
 	option = {
 		name = germany_yearly.15.b
 		log = "[GetDateText]: [This.GetName]: germany_yearly.15.b executed"
-		custom_effect_tooltip = GER_change_public_budget
-		set_temp_variable = { GER_police_cost_change = 0.01 }
-		update_GER_police_cost = yes
+		custom_effect_tooltip = {
+			localization_key = modifies_dynamic_modifier_tt
+			MODIFIER = GER_generic_spending_laws
+		}
+		add_to_variable = { GER_police_cost = 0.01 tooltip = GER_police_cost_tt }
 		ai_chance = {
 			base = 5
 		}
@@ -6585,9 +6595,11 @@ country_event = {
 	option = {
 		name = germany_yearly.16.b
 		log = "[GetDateText]: [This.GetName]: germany_yearly.16.b executed"
-		custom_effect_tooltip = GER_change_public_budget
-		set_temp_variable = { GER_welfare_cost_change = 0.01 }
-		update_GER_welfare_cost = yes
+		custom_effect_tooltip = {
+			localization_key = modifies_dynamic_modifier_tt
+			MODIFIER = GER_generic_spending_laws
+		}
+		add_to_variable = { GER_welfare_cost = 0.01 tooltip = GER_welfare_cost_tt }
 		ai_chance = {
 			base = 5
 		}
@@ -6613,8 +6625,7 @@ country_event = {
 	option = {
 		name = germany_yearly.17.b
 		log = "[GetDateText]: [This.GetName]: germany_yearly.17.b executed"
-		set_temp_variable = { GER_interest_cost_change = 0.001 }
-		update_GER_interest_cost = yes
+		add_to_variable = { GER_interest_cost = 0.001 tooltip = GER_interest_cost_tt }
 		random_owned_state = {
 			add_extra_state_shared_building_slots = 3
 			add_building_construction = {
@@ -6848,9 +6859,11 @@ country_event = {
 	option = {
 		name = germany_yearly.21.a
 		log = "[GetDateText]: [This.GetName]: germany_yearly.21.a executed"
-		custom_effect_tooltip = GER_change_public_budget
-		set_temp_variable = { GER_welfare_cost_change = 0.01 }
-		update_GER_welfare_cost = yes
+		custom_effect_tooltip = {
+			localization_key = modifies_dynamic_modifier_tt
+			MODIFIER = GER_generic_spending_laws
+		}
+		add_to_variable = { GER_welfare_cost = 0.01 tooltip = GER_welfare_cost_tt }
 		set_temp_variable = { temp_opinion = -3 }
 		change_industrial_conglomerates_opinion = yes
 		set_temp_variable = { temp_opinion = -2 }
@@ -6865,9 +6878,11 @@ country_event = {
 	option = {
 		name = germany_yearly.21.b
 		log = "[GetDateText]: [This.GetName]: germany_yearly.21.b executed"
-		custom_effect_tooltip = GER_change_public_budget
-		set_temp_variable = { GER_welfare_cost_change = -0.01 }
-		update_GER_welfare_cost = yes
+		custom_effect_tooltip = {
+			localization_key = modifies_dynamic_modifier_tt
+			MODIFIER = GER_generic_spending_laws
+		}
+		add_to_variable = { GER_welfare_cost = -0.01 tooltip = GER_welfare_cost_tt }
 		set_temp_variable = { temp_opinion = 3 }
 		change_industrial_conglomerates_opinion = yes
 		set_temp_variable = { temp_opinion = 2 }
@@ -6907,9 +6922,9 @@ country_event = {
 			create_ship = { type = corvette_hull_3 equipment_variant = "MEKO Anzac Class" creator = GER }
 		}
 		GER = {
-	 		set_temp_variable = { treasury_change = 12.0 }
+			 set_temp_variable = { treasury_change = 12.0 }
 			modify_treasury_effect = yes
-	 	}
+		 }
 	}
 	#Sell Victory Class
 	option = {
@@ -6930,9 +6945,9 @@ country_event = {
 			create_ship = { type = corvette_hull_3 equipment_variant = "Victory Class" creator = GER }
 		}
 		GER = {
-	 		set_temp_variable = { treasury_change = 12.0 }
+			 set_temp_variable = { treasury_change = 12.0 }
 			modify_treasury_effect = yes
-	 	}
+		 }
 	}
 	#Sell El Radii Class
 	option = {
@@ -6953,9 +6968,9 @@ country_event = {
 			create_ship = { type = frigate_hull_3 equipment_variant = "El Radii Class" creator = GER }
 		}
 		GER = {
-	 		set_temp_variable = { treasury_change = 12.0 }
+			 set_temp_variable = { treasury_change = 12.0 }
 			modify_treasury_effect = yes
-	 	}
+		 }
 	}
 }
 # HDW
@@ -6985,9 +7000,9 @@ country_event = {
 			create_ship = { type = attack_submarine_hull_3 equipment_variant = "Type 212 Class" creator = GER }
 		}
 		GER = {
-	 		set_temp_variable = { treasury_change = 12.0 }
+			 set_temp_variable = { treasury_change = 12.0 }
 			modify_treasury_effect = yes
-	 	}
+		 }
 	}
 	#Sell Type 209
 	option = {
@@ -7008,9 +7023,9 @@ country_event = {
 			create_ship = { type = attack_submarine_hull_2 equipment_variant = "Type 209 Class - Preveze Variant" creator = GER }
 		}
 		GER = {
-	 		set_temp_variable = { treasury_change = 12.0 }
+			 set_temp_variable = { treasury_change = 12.0 }
 			modify_treasury_effect = yes
-	 	}
+		 }
 	}
 	#Sell Poseidon Class
 	option = {
@@ -7031,9 +7046,9 @@ country_event = {
 			create_ship = { type = attack_submarine_hull_2 equipment_variant = "Poseidon Class" creator = GER }
 		}
 		GER = {
-	 		set_temp_variable = { treasury_change = 12.0 }
+			 set_temp_variable = { treasury_change = 12.0 }
 			modify_treasury_effect = yes
-	 	}
+		 }
 	}
 }
 # Thyssenkrupp
@@ -7063,9 +7078,9 @@ country_event = {
 			create_ship = { type = attack_submarine_hull_3 equipment_variant = "Type 212 Class" creator = GER }
 		}
 		GER = {
-	 		set_temp_variable = { treasury_change = 12.0 }
+			 set_temp_variable = { treasury_change = 12.0 }
 			modify_treasury_effect = yes
-	 	}
+		 }
 	}
 	#Sell Type 209
 	option = {
@@ -7086,9 +7101,9 @@ country_event = {
 			create_ship = { type = attack_submarine_hull_2 equipment_variant = "Type 209 Class - Preveze Variant" creator = GER }
 		}
 		GER = {
-	 		set_temp_variable = { treasury_change = 12.0 }
+			 set_temp_variable = { treasury_change = 12.0 }
 			modify_treasury_effect = yes
-	 	}
+		 }
 	}
 	#Sell Anzac Class
 	option = {
@@ -7109,9 +7124,9 @@ country_event = {
 			create_ship = { type = corvette_hull_3 equipment_variant = "MEKO Anzac Class" creator = GER }
 		}
 		GER = {
-	 		set_temp_variable = { treasury_change = 12.0 }
+			 set_temp_variable = { treasury_change = 12.0 }
 			modify_treasury_effect = yes
-	 	}
+		 }
 	}
 	#Sell Victory Class
 	option = {
@@ -7132,9 +7147,9 @@ country_event = {
 			create_ship = { type = corvette_hull_3 equipment_variant = "Victory Class" creator = GER }
 		}
 		GER = {
-	 		set_temp_variable = { treasury_change = 12.0 }
+			 set_temp_variable = { treasury_change = 12.0 }
 			modify_treasury_effect = yes
-	 	}
+		 }
 	}
 }
 
@@ -11475,30 +11490,29 @@ country_event = { #Rec
 		log = "[GetDateText]: [This.GetName]: GER_Cold_War.20.a executed"
 		custom_effect_tooltip = GER_Fennek_TT
 		newline = yes
-		custom_effect_tooltip = GER_change_heer_spirit
-		set_temp_variable = { GER_Army_defence_change = 0.02 }
-		update_GER_Army_defence = yes
-		set_temp_variable = { GER_Army_attack_change = 0.02 }
-		update_GER_Army_attack = yes
-		set_temp_variable = { Ger_army_artillery_attack_factor_change = 0.09 }
-		update_Ger_army_artillery_attack_factor = yes
-		set_temp_variable = { GER_army_speed_factor_change = 0.02 }
-		update_GER_army_speed_factor = yes
-		set_temp_variable = { GER_intel_network_gain_factor_heer_change = 0.03 }
-		update_GER_intel_network_gain_factor_heer = yes
-		set_temp_variable = { GER_recon_factor_change = 0.08 }
-		update_GER_recon_factor = yes
+		custom_effect_tooltip = {
+			localization_key = modifies_dynamic_modifier_tt
+			MODIFIER = GER_Bundeswehr_modifier
+		}
+		add_to_variable = { GER_Army_defence = 0.02 tooltip = GER_Army_defence_tt }
+		add_to_variable = { GER_Army_attack = 0.02 tooltip = GER_Army_attack_tt }
+		add_to_variable = { Ger_army_artillery_attack_factor = 0.09 tooltip = Ger_army_artillery_attack_factor_tt }
+		add_to_variable = { GER_army_speed_factor = 0.02 tooltip = GER_army_speed_factor_tt }
+		add_to_variable = { GER_intel_network_gain_factor_heer = 0.03 tooltip = GER_intel_network_gain_factor_heer_tt }
+		add_to_variable = { GER_recon_factor = 0.08 tooltip = GER_recon_factor_tt }
 		newline = yes
-		custom_effect_tooltip = GER_change_luftwaffe_spirit
-		set_temp_variable = { GER_ground_attack_change = 0.05 }
-		update_GER_ground_attack = yes
-		newline	= yes
+		custom_effect_tooltip = {
+			localization_key = modifies_dynamic_modifier_tt
+			MODIFIER = GER_Luftwaffe_modifier
+		}
+		add_to_variable = { GER_ground_attack = 0.05 tooltip = GER_ground_attack_tt }
+		newline = yes
 		add_equipment_to_stockpile = {
-				type = medium_tank_destroyer_chassis_2
-				variant_name = "Fennek"
-				amount = 220
-				producer = GER
-			}
+			type = medium_tank_destroyer_chassis_2
+			variant_name = "Fennek"
+			amount = 220
+			producer = GER
+		}
 		newline = yes
 		set_temp_variable = { treasury_change = GER.gdp_per_capita }
 		multiply_temp_variable = { treasury_change = -0.20 }
@@ -11510,25 +11524,25 @@ country_event = { #Rec
 		custom_effect_tooltip = GER_Luchs_TT
 		GER = {
 			create_equipment_variant = {
-			name = "Spähpanzer 3 Luchs 2"
-			type = medium_tank_destroyer_chassis_2
-			parent_version = 0
-			modules = {
-				main_armament_slot = small_autocannon_2
-				reload_type_slot = automatic_loading
-				ammunition_load_slot = mixed_autocannon_ammo_1
-				turret_type_slot = tank_base_tank_turret
-				suspension_type_slot = tank_wheeled_suspension_medium
-				engine_type_slot = tank_diesel_engine_gen3
-				armor_type_slot = afv_composite_armor_gen2
-				special_type_slot_1 = afv_mine_protection
-				special_type_slot_2 = smoke_launchers_2
-				special_type_slot_4 = tank_battlestation_4
-			}
-			upgrades = {
-				tank_nsb_armor_upgrade = 2
-			}
-			icon = "gfx/interface/technologies/GER/LAND/GER_Luchs.dds"
+				name = "Spähpanzer 3 Luchs 2"
+				type = medium_tank_destroyer_chassis_2
+				parent_version = 0
+				modules = {
+					main_armament_slot = small_autocannon_2
+					reload_type_slot = automatic_loading
+					ammunition_load_slot = mixed_autocannon_ammo_1
+					turret_type_slot = tank_base_tank_turret
+					suspension_type_slot = tank_wheeled_suspension_medium
+					engine_type_slot = tank_diesel_engine_gen3
+					armor_type_slot = afv_composite_armor_gen2
+					special_type_slot_1 = afv_mine_protection
+					special_type_slot_2 = smoke_launchers_2
+					special_type_slot_4 = tank_battlestation_4
+				}
+				upgrades = {
+					tank_nsb_armor_upgrade = 2
+				}
+				icon = "gfx/interface/technologies/GER/LAND/GER_Luchs.dds"
 			}
 		}
 	}
@@ -11538,26 +11552,26 @@ country_event = { #Rec
 		custom_effect_tooltip = GER_Armored_Rec_TT
 		GER = {
 			create_equipment_variant = {
-			name = "Spähpanzer 3 Luchs 2"
-			type = medium_tank_destroyer_chassis_2
-			parent_version = 0
-			modules = {
-				main_armament_slot = tank_small_medium_cannon_2
-				reload_type_slot = automatic_loading
-				ammunition_load_slot = mixed_autocannon_ammo_1
-				turret_type_slot = tank_base_tank_turret
-				suspension_type_slot = tank_wheeled_suspension_medium
-				engine_type_slot = tank_diesel_engine_gen4
-				armor_type_slot = afv_composite_armor_gen2
-				special_type_slot_1 = afv_mine_protection
-				special_type_slot_2 = smoke_launchers_2
-				special_type_slot_3 = afv_atgm_gen3
-				special_type_slot_4 = tank_battlestation_4
-			}
-			upgrades = {
-				tank_nsb_armor_upgrade = 2
-			}
-			icon = "gfx/interface/technologies/GER/LAND/GER_Luchs.dds"
+				name = "Spähpanzer 3 Luchs 2"
+				type = medium_tank_destroyer_chassis_2
+				parent_version = 0
+				modules = {
+					main_armament_slot = tank_small_medium_cannon_2
+					reload_type_slot = automatic_loading
+					ammunition_load_slot = mixed_main_ammo_1
+					turret_type_slot = tank_base_tank_turret
+					suspension_type_slot = tank_wheeled_suspension_medium
+					engine_type_slot = tank_diesel_engine_gen4
+					armor_type_slot = afv_composite_armor_gen2
+					special_type_slot_1 = afv_mine_protection
+					special_type_slot_2 = smoke_launchers_2
+					special_type_slot_3 = afv_atgm_gen3
+					special_type_slot_4 = tank_battlestation_4
+				}
+				upgrades = {
+					tank_nsb_armor_upgrade = 2
+				}
+				icon = "gfx/interface/technologies/GER/LAND/GER_Luchs.dds"
 			}
 		}
 	}
@@ -11727,7 +11741,7 @@ country_event = { #The Eurofighter
 				avionics_type_slot = avionics_manned_3
 				wingform_type_slot = wing_delta_canard
 				special_slot_type_1 = spec_countermeasures_2
-				special_slot_type_2 = spec_refuel_3
+				special_slot_type_2 = empty
 				special_slot_type_3 = spec_tgp_2
 				fixed_auxiliary_weapon_slot_1 = weap_mp_light_hardpoint_2
 				fixed_auxiliary_weapon_slot_2 = weap_as_hardpoint_2
@@ -11751,7 +11765,7 @@ country_event = { #The Eurofighter
 				avionics_type_slot = avionics_manned_3
 				wingform_type_slot = wing_delta_canard
 				special_slot_type_1 = spec_countermeasures_2
-				special_slot_type_2 = spec_refuel_3
+				special_slot_type_2 = empty
 				special_slot_type_3 = spec_tgp_2
 				fixed_auxiliary_weapon_slot_1 = weap_mp_light_hardpoint_2
 				fixed_auxiliary_weapon_slot_2 = weap_as_hardpoint_2
@@ -16775,19 +16789,19 @@ country_event = {
 					news_event = {
 					id = GER_news.22
 					days = 30
-				   }
+				 }
 				}
 				10 = {
 					news_event = {
 					id = GER_news.23
 					days = 30
-				   }
+				 }
 				}
 				80 = {
 					news_event = {
 					id = GER_news.24
 					days = 30
-				   }
+				 }
 				}
 			}
 		}
@@ -16875,7 +16889,7 @@ country_event = {
 					news_event = {
 						id = GER_news.17
 						days = 7
-				   }
+				 }
 				}
 				25 = {
 					news_event = {
@@ -16895,13 +16909,13 @@ country_event = {
 					news_event = {
 						id = GER_news.19
 						days = 1
-				   }
+				 }
 				}
 				50 = {
 					news_event = {
 						id = GER_news.20
 						days = 1
-				   }
+				 }
 				}
 				30 = {
 					news_event = {
@@ -16959,13 +16973,13 @@ news_event = {
 					news_event = {
 						id = GER_news.19
 						days = 1
-				   }
+				 }
 				}
 				40 = {
 					news_event = {
 						id = GER_news.20
 						days = 1
-				   }
+				 }
 				}
 				50 = {
 					news_event = {
