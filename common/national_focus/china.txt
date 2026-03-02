@@ -36,7 +36,6 @@ focus_tree = {
 		scroll_wheel_factor = 0.80
 	}
 
-
 	##PARTY POLITICS TREE##
 	focus = {
 		id = CHI_Chairman_Jiang_Reign
@@ -631,7 +630,6 @@ focus_tree = {
 					NOT = {
 						has_idea = Non_State_Actor
 						has_idea = Lacks_International_Recognition
-						has_idea = rival_government
 					}
 				}
 				set_temp_variable = { percent_change = 1 }
@@ -671,7 +669,7 @@ focus_tree = {
 					NOT = {
 						has_idea = Non_State_Actor
 						has_idea = Lacks_International_Recognition
-						has_idea = rival_government
+
 					}
 				}
 				set_temp_variable = { percent_change = 1 }
@@ -710,7 +708,7 @@ focus_tree = {
 					NOT = {
 						has_idea = Non_State_Actor
 						has_idea = Lacks_International_Recognition
-						has_idea = rival_government
+
 					}
 				}
 				set_temp_variable = { percent_change = 1 }
@@ -809,7 +807,6 @@ focus_tree = {
 			base = 1
 		}
 	}
-
 
 	focus = {
 		id = CHI_Affirm_Ties_to_the_Military
@@ -3336,7 +3333,6 @@ focus_tree = {
 		}
 	}
 
-
 	focus = {
 		id = CHI_Mihoyo
 		icon = mihoyo
@@ -3466,7 +3462,7 @@ focus_tree = {
 					NOT = {
 						has_idea = Non_State_Actor
 						has_idea = Lacks_International_Recognition
-						has_idea = rival_government
+
 					}
 				}
 				set_temp_variable = { percent_change = 1 }
@@ -4931,10 +4927,6 @@ focus_tree = {
 
 		available = {
 			NOT = { has_war_with = TAI }
-			custom_trigger_tooltip = {
-				tooltip = TAI_declared_independence_tt
-				TAI = { has_cosmetic_tag = TAI_independent }
-			}
 		}
 
 		bypass = {
@@ -5173,7 +5165,6 @@ focus_tree = {
 
 		cost = 2
 
-
 		available = {
 			OR = {
 				NOT = { country_exists = TAI }
@@ -5402,10 +5393,6 @@ focus_tree = {
 				}
 				TAI = {
 					influence_higher_50 = yes
-				}
-				custom_trigger_tooltip = {
-					tooltip = TAI_not_declared_independence_tt
-					TAI = { NOT = { has_cosmetic_tag = TAI_independent } }
 				}
 			}
 			}
@@ -9617,7 +9604,7 @@ focus_tree = {
 					NOT = {
 						has_idea = Non_State_Actor
 						has_idea = Lacks_International_Recognition
-						has_idea = rival_government
+
 					}
 					check_variable = { THIS.gdp_total > 100 }
 				}
@@ -10322,7 +10309,6 @@ focus_tree = {
 		}
 	}
 
-
 	focus = {
 		id = CHI_zhejiang_megacity
 		icon = pearl_river_megacity
@@ -11000,7 +10986,6 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_EXPENDITURE }
 
 		cancel_if_invalid = no
-
 
 		available = {
 			OR = {
@@ -11991,7 +11976,7 @@ focus_tree = {
 					NOT = {
 						has_idea = Non_State_Actor
 						has_idea = Lacks_International_Recognition
-						has_idea = rival_government
+
 					}
 				}
 				set_temp_variable = { percent_change = 1 }
@@ -12271,7 +12256,7 @@ focus_tree = {
 					NOT = {
 						has_idea = Non_State_Actor
 						has_idea = Lacks_International_Recognition
-						has_idea = rival_government
+
 					}
 				}
 				set_temp_variable = { percent_change = 1 }
@@ -13055,7 +13040,7 @@ focus_tree = {
 				add = 1
 				OR = {
 					is_historical_focus_on = no
-					has_idea = superpower
+					has_idea = super_power
 				}
 			}
 		}
@@ -14038,7 +14023,6 @@ focus_tree = {
 		}
 	}
 
-
 	focus = {
 		id = CHI_Maintain_Commitment_to_Denuclearization
 		icon = LIB_prohibit_nuclear
@@ -14439,14 +14423,9 @@ focus_tree = {
 				}
 				set_variable = { party_pop_array^22 = 1 }
 				recalculate_party = yes
-				clear_array = ruling_party
-				clear_array = gov_coalition_array
-				add_to_array = { ruling_party = 22 }
-				update_government_coalition_strength = yes
-				update_party_name = yes
-				set_coalition_drift = yes
-				set_ruling_leader = yes
-				set_leader = yes
+				set_temp_variable = { rul_party_temp = 22 }
+				set_temp_variable = { disable_elections = 1 }
+				change_ruling_party_effect = yes
 				#Influence system
 				init_influence = yes
 				set_variable = { domestic_influence_amount = 200 }
@@ -14512,10 +14491,6 @@ focus_tree = {
 					limit = { has_government = communism }
 					NKO = {
 						hidden_effect = {
-							set_politics = {
-								ruling_party = communism
-								elections_allowed = no
-							}
 							set_popularities = {
 								democratic = 0.0
 								communism = 100.0
@@ -14524,12 +14499,9 @@ focus_tree = {
 								nationalist = 0.0
 							}
 							set_variable = { party_pop_array^6 = 1 } #Reactionary
-							clear_array = ruling_party
-							clear_array = gov_coalition_array
-							add_to_array = { ruling_party = 6 }
-							update_government_coalition_strength = yes
-							update_party_name = yes
-							set_coalition_drift = yes
+							set_temp_variable = { rul_party_temp = 6 }
+							set_temp_variable = { disable_elections = 1 }
+							change_ruling_party_effect = yes
 							recalculate_party = yes
 						}
 					}
@@ -14538,10 +14510,6 @@ focus_tree = {
 					limit = { has_government = democratic }
 					NKO = {
 						hidden_effect = {
-							set_politics = {
-								ruling_party = democratic
-								elections_allowed = no
-							}
 							set_popularities = {
 								democratic = 100.0
 								communism = 0.0
@@ -14550,12 +14518,9 @@ focus_tree = {
 								nationalist = 0.0
 							}
 							set_variable = { party_pop_array^3 = 1 } #socialism
-							clear_array = ruling_party
-							clear_array = gov_coalition_array
-							add_to_array = { ruling_party = 3 }
-							update_government_coalition_strength = yes
-							update_party_name = yes
-							set_coalition_drift = yes
+							set_temp_variable = { rul_party_temp = 3 }
+							set_temp_variable = { disable_elections = 1 }
+							change_ruling_party_effect = yes
 							recalculate_party = yes
 						}
 					}
@@ -14564,10 +14529,6 @@ focus_tree = {
 					limit = { has_government = neutrality }
 					NKO = {
 						hidden_effect = {
-							set_politics = {
-								ruling_party = neutrality
-								elections_allowed = no
-							}
 							set_popularities = {
 								democratic = 0.0
 								communism = 0.0
@@ -14576,12 +14537,9 @@ focus_tree = {
 								nationalist = 0.0
 							}
 							set_variable = { party_pop_array^18 = 1 } #neutral_Social
-							clear_array = ruling_party
-							clear_array = gov_coalition_array
-							add_to_array = { ruling_party = 18 }
-							update_government_coalition_strength = yes
-							update_party_name = yes
-							set_coalition_drift = yes
+							set_temp_variable = { rul_party_temp = 18 }
+							set_temp_variable = { disable_elections = 1 }
+							change_ruling_party_effect = yes
 							recalculate_party = yes
 						}
 					}
@@ -14590,10 +14548,6 @@ focus_tree = {
 					limit = { has_government = nationalist }
 					NKO = {
 						hidden_effect = {
-							set_politics = {
-								ruling_party = nationalist
-								elections_allowed = no
-							}
 							set_popularities = {
 								democratic = 0.0
 								communism = 0.0
@@ -14602,12 +14556,9 @@ focus_tree = {
 								nationalist = 100.0
 							}
 							set_variable = { party_pop_array^22 = 1 } #Nat_Autocracy
-							clear_array = ruling_party
-							clear_array = gov_coalition_array
-							add_to_array = { ruling_party = 22 }
-							update_government_coalition_strength = yes
-							update_party_name = yes
-							set_coalition_drift = yes
+							set_temp_variable = { rul_party_temp = 22 }
+							set_temp_variable = { disable_elections = 1 }
+							change_ruling_party_effect = yes
 							recalculate_party = yes
 						}
 					}
@@ -14853,7 +14804,6 @@ focus_tree = {
 			base = 1
 		}
 	}
-
 
 	focus = {
 		id = CHI_Iron_Brothers
@@ -15328,21 +15278,9 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			AFG = {
-				set_temp_variable = { rad_change = -20 }
-				modify_radicalization_effect = yes
-			}
-			PAK = {
-				set_temp_variable = { rad_change = -20 }
-				modify_radicalization_effect = yes
-			}
-			TAJ = {
-				set_temp_variable = { rad_change = -20 }
-				modify_radicalization_effect = yes
-			}
+			log = "[GetDateText]: [This.GetName]: focus CHI_Tackle_the_Root_Causes_of_Radicalization executed"
 			set_temp_variable = { modify_uighur_threat = -40 }
 			CHI_modify_uighur_threat = yes
-			log = "[GetDateText]: [This.GetName]: focus CHI_Tackle_the_Root_Causes_of_Radicalization executed"
 		}
 
 		ai_will_do = {
@@ -16321,7 +16259,7 @@ focus_tree = {
 				add = 1
 				OR = {
 					has_idea = great_power
-					has_idea = superpower
+					has_idea = super_power
 				}
 			}
 			modifier = {
@@ -16777,7 +16715,7 @@ focus_tree = {
 		mutually_exclusive = { focus = CHI_Favor_Multipolarity }
 
 		available = {
-			has_idea = superpower
+			has_idea = super_power
 			NOT = { has_government = democratic }
 		}
 
@@ -16846,7 +16784,7 @@ focus_tree = {
 							NOT = {
 								has_idea = Non_State_Actor
 								has_idea = Lacks_International_Recognition
-								has_idea = rival_government
+
 							}
 							OR = {
 								is_african_nation = yes
@@ -16920,7 +16858,7 @@ focus_tree = {
 							NOT = {
 								has_idea = Non_State_Actor
 								has_idea = Lacks_International_Recognition
-								has_idea = rival_government
+
 							}
 							check_variable = { influence_array^0 = USA }
 						}
@@ -17944,7 +17882,7 @@ focus_tree = {
 					NOT = {
 						has_idea = Non_State_Actor
 						has_idea = Lacks_International_Recognition
-						has_idea = rival_government
+
 					}
 				}
 				set_temp_variable = { percent_change = 1 }
@@ -17994,7 +17932,7 @@ focus_tree = {
 					NOT = {
 						has_idea = Non_State_Actor
 						has_idea = Lacks_International_Recognition
-						has_idea = rival_government
+
 					}
 					influence_higher_20 = yes
 				}
@@ -18058,7 +17996,7 @@ focus_tree = {
 						NOT = {
 							has_idea = Non_State_Actor
 							has_idea = Lacks_International_Recognition
-							has_idea = rival_government
+
 						}
 						influence_higher_20 = yes
 					}
@@ -18074,7 +18012,7 @@ focus_tree = {
 						NOT = {
 							has_idea = Non_State_Actor
 							has_idea = Lacks_International_Recognition
-							has_idea = rival_government
+
 						}
 						influence_higher_20 = yes
 					}
@@ -18096,7 +18034,6 @@ focus_tree = {
 		}
 	}
 
-
 	focus = {
 		id = CHI_Outsource_Cheap_Labor
 		icon = become_puppet
@@ -18116,7 +18053,7 @@ focus_tree = {
 					NOT = {
 						has_idea = Non_State_Actor
 						has_idea = Lacks_International_Recognition
-						has_idea = rival_government
+
 					}
 					influence_higher_20 = yes
 				}
@@ -18151,7 +18088,7 @@ focus_tree = {
 					NOT = {
 						has_idea = Non_State_Actor
 						has_idea = Lacks_International_Recognition
-						has_idea = rival_government
+
 					}
 					influence_higher_20 = yes
 				}
@@ -18189,7 +18126,7 @@ focus_tree = {
 					NOT = {
 						has_idea = Non_State_Actor
 						has_idea = Lacks_International_Recognition
-						has_idea = rival_government
+
 					}
 					influence_higher_10 = yes
 				}
@@ -18229,7 +18166,7 @@ focus_tree = {
 					NOT = {
 						has_idea = Non_State_Actor
 						has_idea = Lacks_International_Recognition
-						has_idea = rival_government
+
 					}
 					influence_higher_10 = yes
 				}
@@ -18269,7 +18206,7 @@ focus_tree = {
 					NOT = {
 						has_idea = Non_State_Actor
 						has_idea = Lacks_International_Recognition
-						has_idea = rival_government
+
 					}
 					influence_higher_20 = yes
 				}
@@ -18310,7 +18247,7 @@ focus_tree = {
 					NOT = {
 						has_idea = Non_State_Actor
 						has_idea = Lacks_International_Recognition
-						has_idea = rival_government
+
 					}
 					OR = { has_idea = CHI_solar_power has_idea = CHI_nuclear_power has_idea = CHI_coal }
 					influence_higher_20 = yes
@@ -18325,7 +18262,7 @@ focus_tree = {
 					NOT = {
 						has_idea = Non_State_Actor
 						has_idea = Lacks_International_Recognition
-						has_idea = rival_government
+
 					}
 					NOT = { has_idea = CHI_solar_power has_idea = CHI_nuclear_power has_idea = CHI_coal }
 					influence_higher_10 = yes
@@ -18366,7 +18303,7 @@ focus_tree = {
 					NOT = {
 						has_idea = Non_State_Actor
 						has_idea = Lacks_International_Recognition
-						has_idea = rival_government
+
 					}
 				}
 				add_stability = 0.02
@@ -18403,7 +18340,7 @@ focus_tree = {
 					NOT = {
 						has_idea = Non_State_Actor
 						has_idea = Lacks_International_Recognition
-						has_idea = rival_government
+
 					}
 				}
 				add_to_tech_sharing_group = China_Africa_Tech_Share
@@ -18440,7 +18377,7 @@ focus_tree = {
 					NOT = {
 						has_idea = Non_State_Actor
 						has_idea = Lacks_International_Recognition
-						has_idea = rival_government
+
 					}
 					influence_higher_10 = yes
 				}
